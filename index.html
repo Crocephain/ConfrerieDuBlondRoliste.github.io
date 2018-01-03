@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confrérie du Blond Rôliste</title>
+  <link rel="icon" href="resources/CdBR.ico"/>
+  <link rel="stylesheet" href="main.css"/>
+  <script type="text/javascript" src="scripts/lang.js"></script>
+  <script type="text/javascript" src="lang/index.js"></script>
+  <script type="text/javascript" src="scripts/anime.min.js"></script>
+  <style>
+    #menu {
+      width: 80%;
+      height: auto;
+      padding: 5% 10%;
+    }
+    #menu button {
+      text-align: center;
+      font-size: 24px;
+      color: white;
+      background-color: transparent;
+      border: none;
+    }
+    .menu {
+      min-width: 128px;
+      margin: 0 7.5%;
+    }
+    #confrerie {
+      margin-right: 15%;
+    }
+    #discord {
+      margin-left: 15%;
+    }
+    .dropdown-content a img {
+      position: relative;
+      top: 8px;
+    }
+  </style>
+</head>
+<body onload="autoDetect()" onhashchange="autoSet()">
+  <header><img id="banner" src="resources/Banner.png"/></header>
+  <nav><div id="menu">
+    <button id="confrerie" class="menu" onclick="location.pathname='confrerie.html'"></button>
+    <button id="discord" class="menu"></button>
+    <button id="guilded" class="menu"></button>
+  </div></nav>
+  <div id="lang" class="dropdown">
+    <button id="lang-btn" class="dropdown-button"></button>
+    <div class="dropdown-content">
+      <a onclick="setLang('fr')"><img src="https://discordapp.com/assets/427c845111c8328fb785dbfe7052337e.svg" width="32" height="32"/> Français</a>
+      <a onclick="setLang('en')"><img src="https://discordapp.com/assets/6c2b2176dab23f4abaceb3bf23338483.svg" width="32" height="32"/> English</a>
+      <a onclick="setLang('sv')"><img src="https://discordapp.com/assets/bf7d9389ab36e9417de5e1ebbff03831.svg" width="32" height="32"/> Svenska</a>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var indexTimeline = anime.timeline();
+    indexTimeline
+      .add({
+        targets: "#banner",
+        translateY: {
+          value: [+50, 0],
+          easing: "linear",
+        },
+        opacity: {
+          value: [0, 1],
+          easing: "easeInQuad",
+        },
+        duration: 750,
+        offset: 0,
+      })
+      .add({
+        targets: ".dropdown",
+        opacity: [0, 1],
+        easing: "linear",
+        duration: 500,
+        offset: 0,
+      })
+      .add({
+        targets: "#confrerie",
+        opacity: [0, 1],
+        translateY: [+50, 0],
+        easing: "easeInQuad",
+        duration: 750,
+        offset: 1000,
+      })
+      .add({
+        targets: "#discord",
+        opacity: [0, 1],
+        translateY: [+50, 0],
+        easing: "easeInQuad",
+        duration: 750,
+        offset: 1750,
+      })
+      .add({
+        targets: "#guilded",
+        opacity: [0, 1],
+        translateY: [+50, 0],
+        easing: "easeInQuad",
+        duration: 750,
+        offset: 2500,
+      });
+  </script>
+</body>
+</html>

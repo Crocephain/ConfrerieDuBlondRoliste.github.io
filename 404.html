@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" hreflang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confrérie du Blond Rôliste</title>
+  <link rel="icon" href="resources/CdBR.ico"/>
+  <link rel="stylesheet" href="main.css"/>
+  <script type="text/javascript" src="scripts/anime.min.js"></script>
+  <style>
+    .error {
+      font-family: "Arial", sans-serif;
+      color: #fa0606;
+      text-align: center;
+    }
+    #anime {
+      position: absolute;
+      left: calc(50% - 255px);
+      top: calc(50% - 255px);
+    }
+  </style>
+</head>
+<body onclick="history.back()">
+  <svg id="anime" width="510" height="510"></svg>
+  <img id="banner" src="resources/Banner.png"/>
+  <h1 class="error">ERROR 404</h1>
+  <h2 class="error">It's dangerous to go alone.<br/>Click anywhere to go back to the beaten tracks, m8.</h2>
+  <script type="text/javascript">
+    for(var i = 0; i < 50; i++) {
+      var point = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      var svg = document.getElementById("anime");
+      svg.appendChild(point);
+      var r = Math.floor((Math.random() * 50) + 200);
+      var angle = (Math.floor(Math.random() * 100) / 100) * 2*Math.PI;
+      var cx = Math.floor(r * Math.cos(angle) + 255);
+      cx = cx.toString();
+      var cy = Math.floor(r * Math.sin(angle) +255);
+      cy = cy.toString();
+      point.setAttribute("cx", cx);
+      point.setAttribute("cy", cy);
+      point.setAttribute("r", "2");
+      point.setAttribute("fill", "#fa0606");
+    };
+    var errorTimeline = anime.timeline();
+    errorTimeline
+      .add({
+        targets: "#banner",
+        translateY: {
+          value: [+50, 0],
+          easing: "linear",
+        },
+        opacity: {
+          value: [0, 1],
+          easing: "easeInQuad",
+        },
+        duration : 750,
+        offset: 0,
+      })
+      .add({
+        targets: ".error",
+        opacity: [0, 1],
+        easing: "easeInCirc",
+        duration: 750,
+        offset: 500,
+      })
+      .add({
+        targets: "#anime",
+        opacity: [0, 1],
+        easing: "linear",
+        duration: 750,
+        offset: 500,
+      });
+    var animeLoop = anime({
+      targets: "#anime",
+      rotate: "1turn",
+      scale: [2.5, 2.5],
+      easing: "linear",
+      duration: 7500,
+      loop: true,
+    });
+  </script>
+</body>
+</html>
